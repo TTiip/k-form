@@ -15,6 +15,6 @@ export default defineComponent({
         }
       }
     }
-    return () => slots?.default(fn)
+    return () => slots?.default && slots?.default(fn)
   }
 })
