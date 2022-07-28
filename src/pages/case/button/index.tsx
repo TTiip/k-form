@@ -10,7 +10,7 @@ export default defineComponent({
         type: 'primary'
       },
       hook: {
-        onClick (form) {
+        onClick (form: any) {
           console.log('[form click]', form)
         }
       }
