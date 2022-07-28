@@ -1,7 +1,7 @@
 import type { Component } from 'vue'
 import { h } from 'vue'
-import KBase from './shared/base.jsx'
-import KButton from './components/button.jsx'
+import KBase from './shared/base'
+import KButton from './components/button'
 
 type ComponentKeys = 'button'
 
