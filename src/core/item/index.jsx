@@ -14,7 +14,6 @@ export function createItem (name, options) {
         { options },
         {
           default: fn => h(comp, { options, fn })
-        }),
-    options
+        })
   }
 }
