@@ -8,6 +8,7 @@ import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Unocss from 'unocss/vite'
 import vueJsx from '@vitejs/plugin-vue-jsx'
+import ElementPlus from 'unplugin-element-plus/vite'
 
 export default defineConfig({
   resolve: {
@@ -16,6 +17,7 @@ export default defineConfig({
     }
   },
   plugins: [
+    ElementPlus(),
     vueJsx(),
     Vue({
       reactivityTransform: true
@@ -54,7 +56,6 @@ export default defineConfig({
       // replaceSquareBrackets: true,
       // 遍历路由信息，给默认路由加一个redirect
       extendRoute (route) {
-        console.log(route, 'route')
         // 如果是默认路由，加一个 redirect 重定向到首页
         // 这里建议 console.log(route) 查看路由信息 在做调试
         if (route.path === '/:all(.*)*') {
