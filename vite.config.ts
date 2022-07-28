@@ -42,7 +42,7 @@ export default defineConfig({
         // }
       ],
       // 当识别到的文件路径包含以下字段时，会自动剔除，比如我们的一些特定的小组件
-      exclude: ['**/components/*'], // 这里的作用是将src目录下，不将含有component字段的组件生成为页面
+      exclude: ['**/components/*', '**/case/*'], // 这里的作用是将src目录下，不将含有component字段的组件生成为页面
       // 引入模式
       importMode: 'async',
       // 只要包含fruits的路由，使用异步懒加载方式,
@@ -54,6 +54,7 @@ export default defineConfig({
       // replaceSquareBrackets: true,
       // 遍历路由信息，给默认路由加一个redirect
       extendRoute (route) {
+        console.log(route, 'route')
         // 如果是默认路由，加一个 redirect 重定向到首页
         // 这里建议 console.log(route) 查看路由信息 在做调试
         if (route.path === '/:all(.*)*') {
