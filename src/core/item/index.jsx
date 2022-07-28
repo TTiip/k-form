@@ -1,9 +1,9 @@
 import { h } from 'vue'
 import KBase from './shared/base.jsx'
-import kButton from './components/button.jsx'
+import KButton from './components/button.jsx'
 
 const COMP_COLLECTION = {
-  button: kButton
+  button: KButton
 }
 
 export function createItem (name, options) {
