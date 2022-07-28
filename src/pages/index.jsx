@@ -1,13 +1,13 @@
 import { defineComponent } from 'vue'
-import FormInputs from './case/input'
+import FormButton from './case/button'
 
 export default defineComponent({
   name: 'PlayGround',
-  components: { FormInputs },
+  components: { FormButton },
   setup () {
     return () => (
       <div>
-        <FormInputs />
+        <FormButton />
         <div i-carbon-campsite text-4xl inline-block />
       </div>
     )
