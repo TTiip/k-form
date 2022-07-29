@@ -2,14 +2,16 @@ import type { Component } from 'vue'
 import { h } from 'vue'
 import KBase from './shared/base'
 import KButton from './components/button'
+import KInput from './components/input'
 
-type ComponentKeys = 'button'
+type ComponentKeys = 'button' | 'input'
 
 type ComCollecTionType = {
   [K in ComponentKeys]: Component
 }
 const COMP_COLLECTION: ComCollecTionType = {
-  button: KButton
+  button: KButton,
+  input: KInput
 }
 
 export function createItem (name: ComponentKeys, options: object) {
@@ -21,6 +23,7 @@ export function createItem (name: ComponentKeys, options: object) {
         { options },
         {
           default: (fn: (...args: any) => void) => h(comp, { options, fn })
-        })
+        }),
+    options
   }
 }
