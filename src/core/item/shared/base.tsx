@@ -1,4 +1,4 @@
-import { defineComponent } from 'vue'
+import { defineComponent, inject } from 'vue'
 
 export default defineComponent({
   name: 'KBaseItem',
@@ -7,25 +7,19 @@ export default defineComponent({
   },
   setup (props, { slots }) {
     const { options } = props
+    // const form = inject('form')
+    const itemInstance: any = {
+      ...Object.assign({}, inject('collectionInstance'))
+    }
     const fn = {
       onClick: () => {
         // 如果存在 onClick 事件，则返回 onClick 事件，并且传入参数。
         if (options?.hook?.onClick) {
-          return () => options.hook.onClick('onClick～123')
+          return () => options.hook.onClick(itemInstance)
         }
       },
-      onChange: () => {
-        // 如果存在 onChange 事件，则返回 onChange 事件，并且传入参数。
-        if (options?.hook?.onChange) {
-          return () => options.hook.onChange('onChange～123')
-        }
-      },
-      onInput: () => {
-        // 如果存在 onInput 事件，则返回 onInput 事件，并且传入参数。
-        if (options?.hook?.onInput) {
-          return (value: any) => options.hook.onInput(value)
-        }
-      }
+      onChange: (val: any) => itemInstance.setForm({ [props.options.key]: val }),
+      onInput: (val: any) => itemInstance.setForm({ [props.options.key]: val })
     }
     return () => slots?.default && slots?.default(fn)
   }
