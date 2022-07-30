@@ -41,8 +41,12 @@ export default defineComponent({
       })
     ]
     // 2. define collection
-    const Collection1 = createCollection('default', FormItems, {})
-    const Collection2 = createCollection('default', SubmitBtns, {})
+    const Collection1 = createCollection('form-item', FormItems, {})
+    const Collection2 = createCollection('default', SubmitBtns, {
+      collectionSetting: {
+        className: 'flex flex-row'
+      }
+    })
     // 3. define form
     const Form = createForm([Collection1, Collection2],
       {

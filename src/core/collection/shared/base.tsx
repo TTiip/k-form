@@ -1,4 +1,4 @@
-import { Fragment, defineComponent, inject, provide, ref, watch } from 'vue'
+import { defineComponent, inject, provide, ref } from 'vue'
 
 export default defineComponent({
   name: 'KBaseCollection',
@@ -8,7 +8,6 @@ export default defineComponent({
   },
   setup (props, { slots }) {
     const { options } = props
-    const form = inject('form')
     const items = ref(props.items)
 
     const collectionInstance = {
@@ -37,14 +36,6 @@ export default defineComponent({
 
     provide('collectionInstance', collectionInstance)
 
-    if (props.options?.hook?.onFormChange) {
-      watch(() => form,
-        () => {
-          props.options?.hook?.onFormChange(collectionInstance)
-        },
-        { deep: true })
-    }
-
-    return () => <Fragment {...(options?.collectionSetting ?? {})}>{slots?.default?.(items.value, options)}</Fragment>
+    return () => <div {...(options?.collectionSetting ?? {})}>{slots?.default?.(items.value, options)}</div>
   }
 })

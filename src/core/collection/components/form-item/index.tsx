@@ -1,14 +1,15 @@
-import './default.css'
+import './index.css'
 import { Transition, computed, defineComponent, inject } from 'vue'
 import { ElFormItem } from 'element-plus'
 
 export default defineComponent({
-  name: 'KDefaultCollection',
+  name: 'KFormItemCollection',
   props: {
     items: { type: Array, default: () => [] },
     options: { type: Object, default: () => ({}) }
   },
   setup (props) {
+    const { options } = props
     const collectionInstance = inject('collectionInstance')
     const form = inject('form')
 
@@ -28,6 +29,7 @@ export default defineComponent({
           class="fade"
           key={item.key}
           label={item.options?.label}
+          {...options.collectionSetting}
           v-slots={{
             default: item.render,
             label: item.options?.customLabel
@@ -44,18 +46,21 @@ export default defineComponent({
     }
 
     return () =>
-      sortedItems.value.map((item: any, index) => (
-        <Transition
-          key={index}
-          name="motion"
-          mode="out-in"
-        >
-          {item?.options?.computed?.show
-            ? item?.options?.computed?.show(form)
-              ? renderItem(item)
-              : null
-            : renderItem(item)}
-        </Transition>
-      ))
+      sortedItems.value.map((item: any, index) => {
+        console.log(item, 'item1111')
+        return (
+          <Transition
+            key={index}
+            name="motion"
+            mode="out-in"
+          >
+            {item?.options?.computed?.show
+              ? item?.options?.computed?.show(form)
+                ? renderItem(item)
+                : null
+              : renderItem(item)}
+          </Transition>
+        )
+      })
   }
 })
