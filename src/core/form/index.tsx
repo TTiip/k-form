@@ -1,4 +1,4 @@
-import { defineComponent, h, provide, reactive } from 'vue'
+import { defineComponent, h, provide, ref } from 'vue'
 import { ElForm } from 'element-plus'
 
 const KForm = defineComponent({
@@ -10,9 +10,8 @@ const KForm = defineComponent({
   },
   setup (props) {
     const { options, collections, initForm } = props
-    const form = reactive({
-      ...initForm
-    })
+    const form = initForm
+    const formRef: any = ref(null)
 
     const defaultFn = (val: any) => val
 
@@ -23,12 +22,16 @@ const KForm = defineComponent({
       getForm: () => form,
       setForm: (val: any) => {
         Object.assign(form, val)
-        console.log('[form 变更]', form)
       },
       submit: () => {
-        const val = beforeSubmit(form)
-        console.log('[form 提交]', form)
-        onSubmit(val)
+        const coverData = beforeSubmit(form)
+        formRef.value?.validate((valid: boolean) => {
+          if (valid) {
+            onSubmit(coverData)
+          } else {
+            console.error('表单中存在未填写的必填项~')
+          }
+        })
       }
     }
 
@@ -36,7 +39,7 @@ const KForm = defineComponent({
     provide('formInstance', formInstance)
 
     return () => (
-      <ElForm {...options?.compSetting}>
+      <ElForm ref={ formRef } { ...options?.compSetting }>
         {collections?.map((collection: any) => collection?.render())}
       </ElForm>
     )

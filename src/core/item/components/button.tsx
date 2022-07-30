@@ -16,7 +16,7 @@ export default defineComponent({
         // 此处 fn?.onClick 一定存在，所以改变写法，判断调用的结果是否存在。不存在则执行 defaultFn。
         onClick={ fn?.onClick() ?? defaultFn }
       >
-        { options.text }
+        { options?.compSetting?.['text-label'] }
       </ElButton>
     )
   }

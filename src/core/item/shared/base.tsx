@@ -7,7 +7,6 @@ export default defineComponent({
   },
   setup (props, { slots }) {
     const { options } = props
-    // const form = inject('form')
     const itemInstance: any = {
       ...Object.assign({}, inject('collectionInstance'))
     }
@@ -18,9 +17,9 @@ export default defineComponent({
           return () => options.hook.onClick(itemInstance)
         }
       },
-      onChange: (val: any) => itemInstance.setForm({ [props.options.key]: val }),
-      onInput: (val: any) => itemInstance.setForm({ [props.options.key]: val })
+      onChange: (val: any) => itemInstance.setForm({ [props.options.compSetting.key]: val }),
+      onInput: (val: any) => itemInstance.setForm({ [props.options.compSetting.key]: val })
     }
-    return () => slots?.default && slots?.default(fn)
+    return () => slots?.default?.(fn, options)
   }
 })

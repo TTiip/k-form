@@ -12,30 +12,13 @@ export default defineComponent({
 
     const collectionInstance = {
       getItems: () => items.value,
-      setItem: (vals: any) => {
-        const keys = items.value.map((item: any) => item.options.key)
-        vals.map((val: any) => {
-          if (!keys.includes(val.options.key)) {
-            items.value.push(val)
-          }
-          return null
-        })
-      },
-      delItem: (vals: any) => {
-        const keys = items.value.map((item: any) => item.options.key)
-        vals.map((val: any) => {
-          const idx = keys.indexOf(val.options.key)
-          if (idx > -1) {
-            items.value.splice(idx, 1)
-          }
-          return null
-        })
-      },
+      setItem: () => {},
+      delItem: () => {},
       ...Object.assign({}, inject('formInstance'))
     }
 
     provide('collectionInstance', collectionInstance)
 
-    return () => <div {...(options?.collectionSetting ?? {})}>{slots?.default?.(items.value, options)}</div>
+    return () => <div {...(options?.compSetting ?? {})}>{slots?.default?.(items.value, options)}</div>
   }
 })

@@ -13,7 +13,7 @@ export default defineComponent({
     return () => (
       <ElInput
         {...options.compSetting}
-        model-value = { form?.[options?.key] ?? '' }
+        model-value = { form?.[options?.compSetting?.key] ?? '' }
         // 此处 fn?.onInput 一定存在，所以改变写法，判断调用的结果是否存在。不存在则执行 defaultFn。
         onInput = { fn?.onInput }
       />

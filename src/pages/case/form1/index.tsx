@@ -4,30 +4,41 @@ import { createCollection, createForm, createItem } from '~/core'
 export default defineComponent({
   name: 'CaseInputs',
   setup () {
+    const modelData = reactive({
+      newName: 1,
+      olaName: ''
+    })
     // 1. define items
     const FormItems = [
       createItem('input', {
-        key: 'name_1',
-        label: '姓名',
+        compSetting: {
+          key: 'newName',
+          prop: 'newName',
+          label: '姓名'
+        },
         customLabel: () => '姓名~~',
         order: 1
       }),
       createItem('input', {
-        key: 'name_2',
-        label: '曾用名',
+        compSetting: {
+          key: 'olaName',
+          prop: 'olaName',
+          label: '曾用名'
+        },
         customLabel: () => '',
         computed: {
-          show: (form: any) => !!form.name_1
+          show: (form: any) => !!form.newName
         },
         order: 2
       })
     ]
     const SubmitBtns = [
       createItem('button', {
-        text: '提交',
         compSetting: {
-          type: 'primary',
-          class: 'mr-[8px]'
+          'text': false,
+          'text-label': '提交',
+          'type': 'primary',
+          'class': 'mr-[8px]'
         },
         order: 2,
         hook: {
@@ -37,9 +48,10 @@ export default defineComponent({
         }
       }),
       createItem('button', {
-        text: '重置',
         compSetting: {
-          class: 'mr-[8px]'
+          'text': true,
+          'text-label': '重置',
+          'class': 'mr-[8px]'
         },
         order: 1
       })
@@ -47,17 +59,23 @@ export default defineComponent({
     // 2. define collection
     const Collection1 = createCollection('form-item', FormItems, {})
     const Collection2 = createCollection('default', SubmitBtns, {
-      collectionSetting: {
+      compSetting: {
         class: 'flex flex-row'
       }
     })
     // 3. define form
     const Form = createForm([Collection1, Collection2],
+      modelData,
       {
-        name_1: 1,
-        name_2: 2
-      },
-      {
+        compSetting: {
+          'label-width': '120px',
+          'model': modelData,
+          'rules': {
+            olaName: [
+              { required: true, message: '请输入曾用名~', trigger: ['blur', 'change'] }
+            ]
+          }
+        },
         hook: {
           beforeSubmit: (originData: any) => {
             return { ...originData, aa: 11 }

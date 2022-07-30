@@ -27,9 +27,8 @@ export default defineComponent({
       return (
         <ElFormItem
           class="fade"
-          key={item.key}
-          label={item.options?.label}
-          {...options.collectionSetting}
+          { ...options.compSetting }
+          { ...item?.options?.compSetting }
           v-slots={{
             default: item.render,
             label: item.options?.customLabel
@@ -37,7 +36,7 @@ export default defineComponent({
                 return (
                   item.options?.customLabel({
                     ...Object.assign({}, collectionInstance)
-                  }) || item.options?.label
+                  }) || item.options?.compSetting?.label
                 )
               }
               : () => null
@@ -47,7 +46,6 @@ export default defineComponent({
 
     return () =>
       sortedItems.value.map((item: any, index) => {
-        console.log(item, 'item1111')
         return (
           <Transition
             key={index}
