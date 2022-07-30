@@ -6,7 +6,7 @@ export default defineComponent({
   setup () {
     const modelData = reactive({
       newName: 1,
-      olaName: ''
+      oldName: ''
     })
     // 1. define items
     const FormItems = [
@@ -21,13 +21,18 @@ export default defineComponent({
       }),
       createItem('input', {
         compSetting: {
-          key: 'olaName',
-          prop: 'olaName',
+          key: 'oldName',
+          prop: 'oldName',
           label: '曾用名'
         },
         customLabel: () => '',
         computed: {
-          show: (form: any) => !!form.newName
+          show: (form: any) => {
+            // 这里也可以对 form 中的数据进行操作，隐藏的 form-item 的数据应该被清掉
+            form.oldName = ''
+            // 此处需要返回一个 bollean 值用来标识是否需要显示该项 !!
+            return !!form.newName
+          }
         },
         order: 2
       })
@@ -71,7 +76,7 @@ export default defineComponent({
           'label-width': '120px',
           'model': modelData,
           'rules': {
-            olaName: [
+            oldName: [
               { required: true, message: '请输入曾用名~', trigger: ['blur', 'change'] }
             ]
           }
