@@ -26,7 +26,8 @@ export default defineComponent({
       createItem('button', {
         text: '提交',
         compSetting: {
-          type: 'primary'
+          type: 'primary',
+          class: 'mr-[8px]'
         },
         order: 2,
         hook: {
@@ -37,6 +38,9 @@ export default defineComponent({
       }),
       createItem('button', {
         text: '重置',
+        compSetting: {
+          class: 'mr-[8px]'
+        },
         order: 1
       })
     ]
@@ -44,7 +48,7 @@ export default defineComponent({
     const Collection1 = createCollection('form-item', FormItems, {})
     const Collection2 = createCollection('default', SubmitBtns, {
       collectionSetting: {
-        className: 'flex flex-row'
+        class: 'flex flex-row'
       }
     })
     // 3. define form

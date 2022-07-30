@@ -1,4 +1,4 @@
-import { Fragment, Transition, computed, defineComponent, inject } from 'vue'
+import { Transition, computed, defineComponent, inject } from 'vue'
 
 export default defineComponent({
   name: 'KDefaultCollection',
@@ -21,7 +21,7 @@ export default defineComponent({
 
     const renderItem = (item: any) => {
       return (
-        <Fragment>{ item.render() }</Fragment>
+        <div>{ item.render() }</div>
       )
     }
 
