@@ -2,11 +2,12 @@ import { defineComponent } from 'vue'
 import { createCollection, createForm, createItem } from '~/core'
 
 export default defineComponent({
-  name: 'CaseInputs',
+  name: 'CaseForm1',
   setup () {
     const modelData = reactive({
       newName: 1,
-      oldName: ''
+      oldName: '',
+      gender: '男'
     })
     // 1. define items
     const FormItems = [
@@ -14,7 +15,8 @@ export default defineComponent({
         compSetting: {
           key: 'newName',
           prop: 'newName',
-          label: '姓名'
+          label: '姓名',
+          clearable: true
         },
         customLabel: () => '姓名~~',
         order: 1
@@ -23,7 +25,8 @@ export default defineComponent({
         compSetting: {
           key: 'oldName',
           prop: 'oldName',
-          label: '曾用名'
+          label: '曾用名',
+          clearable: true
         },
         customLabel: () => '',
         computed: {
@@ -35,6 +38,25 @@ export default defineComponent({
           }
         },
         order: 2
+      }),
+      createItem('select', {
+        compSetting: {
+          label: '性别',
+          key: 'gender',
+          prop: 'gender',
+          clearable: true,
+          options: [
+            { label: '男', value: '男' },
+            { label: '女', value: '女' }
+          ]
+        },
+        customLabel: () => '',
+        hook: {
+          onClose (instance: any) {
+            instance.setForm({ gender: '' })
+          }
+        },
+        order: 3
       })
     ]
     const SubmitBtns = [
@@ -78,6 +100,9 @@ export default defineComponent({
           'rules': {
             oldName: [
               { required: true, message: '请输入曾用名~', trigger: ['blur', 'change'] }
+            ],
+            gender: [
+              { required: true, message: '请选择性别~', trigger: ['blur', 'change'] }
             ]
           }
         },
@@ -90,9 +115,16 @@ export default defineComponent({
           }
         }
       })
+    // 1.直接在setup中导出一个渲染函数
+    return () => Form.render()
 
-    return () => (
-      Form.render()
-    )
+    // 2.setup函数中，在 render 中调用
+    // return {
+    //   Form
+    // }
   }
+  // render () {
+  //   console.log(this.Form, 'ss')
+  //   return this.Form.render()
+  // }
 })
