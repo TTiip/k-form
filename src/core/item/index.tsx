@@ -3,15 +3,17 @@ import { h } from 'vue'
 import KBase from './shared/base'
 import KButton from './components/button'
 import KInput from './components/input'
+import Kselect from './components/select'
 
-type ComponentKeys = 'button' | 'input'
+type ComponentKeys = 'button' | 'input' | 'select'
 
 type ComCollecTionType = {
   [K in ComponentKeys]: Component
 }
 const COMP_COLLECTION: ComCollecTionType = {
   button: KButton,
-  input: KInput
+  input: KInput,
+  select: Kselect
 }
 
 export function createItem (name: ComponentKeys, options: any) {
