@@ -106,7 +106,7 @@ export default defineComponent({
             return { ...originData, aa: 11 }
           },
           onSubmit: (val: any) => {
-            emit('submit', modelData)
+            emit('submit', val)
             console.log('Form中的 submit 方法~', val)
           }
         }
