@@ -10,6 +10,26 @@ export default defineComponent({
       oldName: '',
       gender: '男'
     })
+    const CheckItems = [
+      createItem('checkbox-button', {
+        compSetting: {
+          text: '显示姓名表单',
+          key: 'name_1'
+        }
+      }),
+      createItem('checkbox-button', {
+        compSetting: {
+          text: '显示性别菜单',
+          key: 'gender_1'
+        }
+      }),
+      createItem('checkbox-button', {
+        compSetting: {
+          text: '显示住址表单',
+          key: 'name_2'
+        }
+      })
+    ]
     // 1. define items
     const FormItems = [
       createItem('input', {
@@ -80,14 +100,19 @@ export default defineComponent({
       })
     ]
     // 2. define collection
-    const Collection1 = createCollection('form-item', FormItems, {})
-    const Collection2 = createCollection('default', SubmitBtns, {
+    const Collection1 = createCollection('default', CheckItems, {
+      compSetting: {
+        className: 'flex flex-row'
+      }
+    })
+    const Collection2 = createCollection('form-item', FormItems, {})
+    const Collection3 = createCollection('default', SubmitBtns, {
       compSetting: {
         class: 'flex flex-row'
       }
     })
     // 3. define form
-    const Form = createForm([Collection1, Collection2],
+    const Form = createForm([Collection1, Collection2, Collection3],
       modelData,
       {
         compSetting: {

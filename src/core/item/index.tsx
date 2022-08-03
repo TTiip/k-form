@@ -4,16 +4,18 @@ import KBase from './shared/base'
 import KButton from './components/button'
 import KInput from './components/input'
 import Kselect from './components/select'
+import Kcheckbox from './components/checkbox-button'
 
-type ComponentKeys = 'button' | 'input' | 'select'
+type ComponentKeys = 'button' | 'input' | 'select' | 'checkbox-button'
 
 type ComCollecTionType = {
   [K in ComponentKeys]: Component
 }
 const COMP_COLLECTION: ComCollecTionType = {
-  button: KButton,
-  input: KInput,
-  select: Kselect
+  'button': KButton,
+  'input': KInput,
+  'select': Kselect,
+  'checkbox-button': Kcheckbox
 }
 
 export function createItem (name: ComponentKeys, options: any) {
