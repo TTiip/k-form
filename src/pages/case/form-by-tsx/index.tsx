@@ -3,7 +3,8 @@ import { createCollection, createForm, createItem } from '~/core'
 
 export default defineComponent({
   name: 'CaseForm1',
-  setup (props, { expose, emit }) {
+  setup (props, { emit }) {
+    // 这里定义的对象一定要是一个 reactive 包裹的对象，建立响应式依赖，可以传递一个空对象。
     const modelData = reactive({
       newName: 1,
       oldName: '',
@@ -111,8 +112,6 @@ export default defineComponent({
           }
         }
       })
-    // 暴露内部变量，供外部调用实例时获取使用。
-    expose({ modelData })
     // 1.直接在setup中导出一个渲染函数
     return () => Form.render()
 
