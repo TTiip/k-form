@@ -3,7 +3,7 @@ import { createCollection, createForm, createItem } from '~/core'
 
 export default defineComponent({
   name: 'CaseForm1',
-  setup () {
+  setup (props, { expose, emit }) {
     const modelData = reactive({
       newName: 1,
       oldName: '',
@@ -30,12 +30,7 @@ export default defineComponent({
         },
         customLabel: () => '',
         computed: {
-          show: (form: any) => {
-            // 这里也可以对 form 中的数据进行操作，隐藏的 form-item 的数据应该被清掉
-            form.oldName = ''
-            // 此处需要返回一个 bollean 值用来标识是否需要显示该项 !!
-            return !!form.newName
-          }
+          show: (form: any) => !!form.newName
         },
         order: 2
       }),
@@ -111,10 +106,13 @@ export default defineComponent({
             return { ...originData, aa: 11 }
           },
           onSubmit: (val: any) => {
-            console.log('submit啦~', val)
+            emit('submit', modelData)
+            console.log('Form中的 submit 方法~', val)
           }
         }
       })
+    // 暴露内部变量，供外部调用实例时获取使用。
+    expose({ modelData })
     // 1.直接在setup中导出一个渲染函数
     return () => Form.render()
 
