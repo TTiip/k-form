@@ -2,7 +2,7 @@ import { defineComponent, inject } from 'vue'
 import { ElOption, ElSelect } from 'element-plus'
 
 export default defineComponent({
-  name: 'HJSelect',
+  name: 'KSelect',
   props: {
     options: { type: Object, default: () => {} },
     fn: { type: Object, default: () => {} }
