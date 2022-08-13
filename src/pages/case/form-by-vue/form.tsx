@@ -66,8 +66,8 @@ export default defineComponent({
             width: '100%'
           },
           options: [
-            { label: '男', value: '男' },
-            { label: '女', value: '女' }
+            { label: '男', value: '男', disabled: false },
+            { label: '女', value: '女', disabled: true }
           ]
         },
         customLabel: () => '',
@@ -84,8 +84,8 @@ export default defineComponent({
           prop: 'checkbox_group',
           key: 'checkbox_group',
           options: [
-            { label: '男 - label', value: '男 - value' },
-            { label: '女 - label', value: '女 - value' }
+            { label: '男 - label', value: '男 - value', disabled: false },
+            { label: '女 - label', value: '女 - value', disabled: true }
           ]
         },
         order: 4
