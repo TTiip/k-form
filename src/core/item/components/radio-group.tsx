@@ -2,7 +2,7 @@ import { defineComponent } from 'vue'
 import { ElRadio, ElRadioGroup } from 'element-plus'
 
 export default defineComponent({
-  name: 'KButton',
+  name: 'KRadioGroup',
   props: {
     options: { type: Object, default: () => {} },
     fn: { type: Object, default: () => {} }
