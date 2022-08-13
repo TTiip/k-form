@@ -10,6 +10,8 @@ export default defineComponent({
   setup (props) {
     const form: any = inject('form')
     const { fn, options } = props
+    // 此处使用 value 当作checkbox 的value值
+    // 使用 slot 设置显示的 label
     return () => (
       <ElCheckboxGroup
         model-value = { form?.[options?.compSetting?.key] ?? [] }
@@ -18,7 +20,13 @@ export default defineComponent({
       >
         {
           options?.compSetting?.options.map((item: any) =>
-            <ElCheckbox key={item.label} {...item}/>)
+            <ElCheckbox
+              key={item.value || item.label}
+              {...item}
+              label={item.value}
+              v-slots={{
+                default: () => item.label
+              }}/>)
         }
       </ElCheckboxGroup>
     )
