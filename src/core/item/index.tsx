@@ -7,7 +7,15 @@ import Kselect from './components/select'
 import Kcheckbox from './components/checkbox-button'
 import KCheckBoxGroup from './components/checkbox-group'
 
-type ComponentKeys = 'button' | 'input' | 'select' | 'checkbox-button' | 'checkbox-group'
+const typeArray = [
+  'button',
+  'input',
+  'select',
+  'checkbox-button',
+  'checkbox-group'
+] as const
+
+type ComponentKeys = typeof typeArray[number]
 
 type ComCollecTionType = {
   [K in ComponentKeys]: Component
