@@ -13,7 +13,7 @@ export default defineComponent({
       checkbox_group: [],
       radio_group: '',
       switch_value: false,
-      data_picker: ''
+      data_picker: '2022-08-11'
     })
     const CheckItems = [
       createItem('checkbox-button', {
@@ -97,8 +97,8 @@ export default defineComponent({
       createItem('radio-group', {
         compSetting: {
           label: '单选择框~',
-          prop: 'radio_group',
           key: 'radio_group',
+          prop: 'radio_group',
           options: [
             { label: 'Option A - label', value: 'Option A - value' },
             { border: true, label: 'Option B - label', value: 'Option B - value', disabled: true }
@@ -109,9 +109,9 @@ export default defineComponent({
       createItem('switch', {
         compSetting: {
           'label': 'switch选择框~',
+          'key': 'switch_value',
           'prop': 'switch_value',
           'style': '--el-switch-on-color: #13ce66; --el-switch-off-color: #ff4949',
-          'key': 'switch_value',
           'active-text': 'Pay by month',
           'inactive-text': 'Pay by year',
           'active-value': 100,
@@ -122,20 +122,21 @@ export default defineComponent({
       createItem('date-picker', {
         compSetting: {
           'label': '时间选择',
+          'key': 'data_picker',
           'prop': 'data_picker',
           'type': 'date',
           'placeholder': '请选择日期',
-          'format': 'YYYY/MM/DD',
+          'format': 'YYYY-MM-DD',
           'value-format': 'YYYY-MM-DD'
         },
         holidays: [
-          '2022-08-01',
-          '2022-08-02',
-          '2022-08-03',
-          '2022-08-04',
-          '2022-08-05',
-          '2022-08-06',
-          '2022-08-07'
+          '2022-10-01',
+          '2022-10-02',
+          '2022-10-03',
+          '2022-10-04',
+          '2022-10-05',
+          '2022-10-06',
+          '2022-10-07'
         ],
         order: 4
       })

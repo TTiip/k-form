@@ -12,9 +12,9 @@ export default defineComponent({
     const { fn, options } = props
     return () => (
       <ElRadioGroup
-        modelValue={form?.[options?.compSetting?.key] ?? ''}
-        onChange={ fn?.onChange }
         {...options.compSetting}
+        modelValue={form?.[options?.compSetting?.key] ?? ''}
+        onUpdate:modelValue={ fn?.onChange }
         v-slots={{
           default: () => options?.compSetting?.options.map((item: any) =>
             <ElRadio

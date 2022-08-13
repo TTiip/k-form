@@ -13,20 +13,19 @@ export default defineComponent({
     const form: any = inject('form')
     const { fn, options } = props
 
-    const isHoliday = (date: any) => {
-      return options?.holidays.includes(date.dayjs.format('YYYY-MM-DD'))
+    const isHoliday = (cell: any) => {
+      return options?.holidays.includes(cell.dayjs.format('YYYY-MM-DD'))
     }
 
     return () => (
       <ElDatePicker
         {...options?.compSetting}
         modelValue = { form?.[options?.compSetting?.key] ?? '' }
-        onChange = { fn?.onChange }
+        onUpdate:modelValue = { fn?.onChange }
         v-slots={{
           default: (cell: any) => {
-            console.log(cell?.isCurrent, 'cell?.isCurrent')
             return (
-              <div className={`${classModule.cell} ${cell?.isCurrent ? 'current' : ''}`}>
+              <div className={`${classModule.cell} ${cell?.isCurrent ? classModule.isCurrent : ''}`}>
                 <span className={ classModule.text }>{cell.text}</span>
                 {
                   isHoliday(cell)

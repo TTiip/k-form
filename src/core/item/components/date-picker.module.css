@@ -14,10 +14,11 @@
   transform: translateX(-50%);
   border-radius: 50%;
 }
-.cell.current .text {
-  background: #626aef;
+.cell.isCurrent .text {
+  background: var(--el-datepicker-active-color);
   color: #fff;
 }
+
 .cell .holiday {
   position: absolute;
   width: 6px;

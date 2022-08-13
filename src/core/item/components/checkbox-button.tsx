@@ -13,9 +13,9 @@ export default defineComponent({
 
     return () => (
       <ElCheckboxButton
-        modelValue={form?.[options.compSetting.key] ?? false}
         {...options.compSetting}
-        onChange={fn?.onChange}>
+        modelValue={form?.[options.compSetting.key] ?? false}
+        onUpdate:modelValue={fn?.onChange}>
         {options.compSetting.text}
       </ElCheckboxButton>
     )
