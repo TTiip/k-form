@@ -8,7 +8,8 @@ export default defineComponent({
     const modelData = reactive({
       newName: 1,
       oldName: '',
-      gender: '男'
+      gender: '男',
+      checkbox_group: []
     })
     const CheckItems = [
       createItem('checkbox-button', {
@@ -61,6 +62,9 @@ export default defineComponent({
           key: 'gender',
           prop: 'gender',
           clearable: true,
+          style: {
+            width: '100%'
+          },
           options: [
             { label: '男', value: '男' },
             { label: '女', value: '女' }
@@ -73,6 +77,18 @@ export default defineComponent({
           }
         },
         order: 3
+      }),
+      createItem('checkbox-group', {
+        compSetting: {
+          label: '选择框呀~',
+          prop: 'checkbox_group',
+          key: 'checkbox_group',
+          options: [
+            { label: '男 - label', value: '男 - value' },
+            { label: '女 - label', value: '女 - value' }
+          ]
+        },
+        order: 4
       })
     ]
     const SubmitBtns = [
