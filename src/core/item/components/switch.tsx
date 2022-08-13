@@ -2,7 +2,7 @@ import { defineComponent, inject } from 'vue'
 import { ElSwitch } from 'element-plus'
 
 export default defineComponent({
-  name: 'KButton',
+  name: 'KSwitch',
   props: {
     options: { type: Object, default: () => {} },
     fn: { type: Object, default: () => {} }
