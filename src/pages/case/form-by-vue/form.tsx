@@ -75,11 +75,6 @@ export default defineComponent({
           ]
         },
         customLabel: () => '',
-        hook: {
-          onClose (instance: any) {
-            instance.setForm({ gender: '' })
-          }
-        },
         order: 3
       }),
       createItem('checkbox-group', {

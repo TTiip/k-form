@@ -1,4 +1,5 @@
 import { defineComponent } from 'vue'
+import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 import { createCollection, createForm, createItem } from '~/core'
 
 export default defineComponent({
@@ -8,7 +9,11 @@ export default defineComponent({
     const modelData = reactive({
       newName: 1,
       oldName: '',
-      gender: '男'
+      gender: '男',
+      checkbox_group: [],
+      radio_group: '',
+      switch_value: false,
+      data_picker: '2022-08-11'
     })
     const CheckItems = [
       createItem('checkbox-button', {
@@ -61,18 +66,74 @@ export default defineComponent({
           key: 'gender',
           prop: 'gender',
           clearable: true,
+          style: {
+            width: '100%'
+          },
           options: [
-            { label: '男', value: '男' },
-            { label: '女', value: '女' }
+            { label: '男', value: '男', disabled: false },
+            { label: '女', value: '女', disabled: true }
           ]
         },
         customLabel: () => '',
-        hook: {
-          onClose (instance: any) {
-            instance.setForm({ gender: '' })
-          }
-        },
         order: 3
+      }),
+      createItem('checkbox-group', {
+        compSetting: {
+          label: '多选择框~',
+          prop: 'checkbox_group',
+          key: 'checkbox_group',
+          options: [
+            { label: 'Option A - label', value: 'Option A - value' },
+            { border: true, label: 'Option B - label', value: 'Option B - value', disabled: true }
+          ]
+        },
+        order: 4
+      }),
+      createItem('radio-group', {
+        compSetting: {
+          label: '单选择框~',
+          key: 'radio_group',
+          prop: 'radio_group',
+          options: [
+            { label: 'Option A - label', value: 'Option A - value' },
+            { border: true, label: 'Option B - label', value: 'Option B - value', disabled: true }
+          ]
+        },
+        order: 4
+      }),
+      createItem('switch', {
+        compSetting: {
+          'label': 'switch选择框~',
+          'key': 'switch_value',
+          'prop': 'switch_value',
+          'style': '--el-switch-on-color: #13ce66; --el-switch-off-color: #ff4949',
+          'active-text': 'Pay by month',
+          'inactive-text': 'Pay by year',
+          'active-value': 100,
+          'inactive-value': 0
+        },
+        order: 4
+      }),
+      createItem('date-picker', {
+        compSetting: {
+          'label': '时间选择',
+          'key': 'data_picker',
+          'prop': 'data_picker',
+          'type': 'date',
+          'placeholder': '请选择日期',
+          'format': 'YYYY-MM-DD',
+          'value-format': 'YYYY-MM-DD'
+        },
+        holidays: [
+          '2022-10-01',
+          '2022-10-02',
+          '2022-10-03',
+          '2022-10-04',
+          '2022-10-05',
+          '2022-10-06',
+          '2022-10-07'
+        ],
+        order: 4
       })
     ]
     const SubmitBtns = [
@@ -115,6 +176,10 @@ export default defineComponent({
     const Form = createForm([Collection1, Collection2, Collection3],
       modelData,
       {
+        providerConfig: {
+          size: 'large',
+          locale: zhCn
+        },
         compSetting: {
           'label-width': '120px',
           'model': modelData,
@@ -124,6 +189,15 @@ export default defineComponent({
             ],
             gender: [
               { required: true, message: '请选择性别~', trigger: ['blur', 'change'] }
+            ],
+            checkbox_group: [
+              { required: true, message: '请选择多选', trigger: ['blur', 'change'] }
+            ],
+            radio_group: [
+              { required: true, message: '请选择单选', trigger: ['blur', 'change'] }
+            ],
+            data_picker: [
+              { required: true, message: '请选择日期', trigger: ['blur', 'change'] }
             ]
           }
         },

@@ -4,7 +4,9 @@ import KBaseCollection from './shared/base'
 import KFormItemCollection from './components/form-item'
 import KDefaultCollection from './components/default'
 
-type ComponentKeys = 'form-item' | 'default'
+const typeArray = ['form-item', 'default'] as const
+
+type ComponentKeys = typeof typeArray[number]
 
 type ComCollecTionType = {
   [K in ComponentKeys]: Component
