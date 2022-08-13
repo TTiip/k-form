@@ -1,4 +1,5 @@
 import { defineComponent } from 'vue'
+import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 import { createCollection, createForm, createItem } from '~/core'
 
 export default defineComponent({
@@ -11,7 +12,8 @@ export default defineComponent({
       gender: '男',
       checkbox_group: [],
       radio_group: '',
-      switch_value: false
+      switch_value: false,
+      data_picker: ''
     })
     const CheckItems = [
       createItem('checkbox-button', {
@@ -116,6 +118,26 @@ export default defineComponent({
           'inactive-value': 0
         },
         order: 4
+      }),
+      createItem('date-picker', {
+        compSetting: {
+          'label': '时间选择',
+          'prop': 'data_picker',
+          'type': 'date',
+          'placeholder': '请选择日期',
+          'format': 'YYYY/MM/DD',
+          'value-format': 'YYYY-MM-DD'
+        },
+        holidays: [
+          '2022-08-01',
+          '2022-08-02',
+          '2022-08-03',
+          '2022-08-04',
+          '2022-08-05',
+          '2022-08-06',
+          '2022-08-07'
+        ],
+        order: 4
       })
     ]
     const SubmitBtns = [
@@ -159,7 +181,8 @@ export default defineComponent({
       modelData,
       {
         providerConfig: {
-          size: 'large'
+          size: 'large',
+          locale: zhCn
         },
         compSetting: {
           'label-width': '120px',
@@ -176,6 +199,9 @@ export default defineComponent({
             ],
             radio_group: [
               { required: true, message: '请选择单选', trigger: ['blur', 'change'] }
+            ],
+            data_picker: [
+              { required: true, message: '请选择日期', trigger: ['blur', 'change'] }
             ]
           }
         },
