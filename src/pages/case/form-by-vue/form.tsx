@@ -131,6 +131,9 @@ export default defineComponent({
     const Form = createForm([Collection1, Collection2, Collection3],
       modelData,
       {
+        providerConfig: {
+          size: 'large'
+        },
         compSetting: {
           'label-width': '120px',
           'model': modelData,

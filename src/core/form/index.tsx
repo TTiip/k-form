@@ -1,5 +1,5 @@
 import { defineComponent, h, provide, ref } from 'vue'
-import { ElForm } from 'element-plus'
+import { ElConfigProvider, ElForm } from 'element-plus'
 
 const KForm = defineComponent({
   name: 'KForm',
@@ -40,9 +40,13 @@ const KForm = defineComponent({
     provide('formInstance', formInstance)
 
     return () => (
-      <ElForm ref={ formRef } { ...options?.compSetting }>
-        {collections?.map((collection: any) => collection?.render())}
-      </ElForm>
+      <div>
+        <ElConfigProvider {...options?.providerConfig || {}}>
+          <ElForm ref={ formRef } { ...options?.compSetting }>
+            {collections?.map((collection: any) => collection?.render())}
+          </ElForm>
+        </ElConfigProvider>
+      </div>
     )
   }
 })
