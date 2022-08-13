@@ -2,7 +2,7 @@ import { defineComponent } from 'vue'
 import { ElCheckbox, ElCheckboxGroup } from 'element-plus'
 
 export default defineComponent({
-  name: 'KCheckBoxWithGroup',
+  name: 'KCheckBoxGroup',
   props: {
     options: { type: Object, default: () => {} },
     fn: { type: Object, default: () => {} }
