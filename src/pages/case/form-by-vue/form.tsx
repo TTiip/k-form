@@ -10,7 +10,8 @@ export default defineComponent({
       oldName: '',
       gender: '男',
       checkbox_group: [],
-      radio_group: ''
+      radio_group: '',
+      switch_value: false
     })
     const CheckItems = [
       createItem('checkbox-button', {
@@ -100,6 +101,19 @@ export default defineComponent({
             { label: 'Option A - label', value: 'Option A - value' },
             { border: true, label: 'Option B - label', value: 'Option B - value', disabled: true }
           ]
+        },
+        order: 4
+      }),
+      createItem('switch', {
+        compSetting: {
+          'label': 'switch选择框~',
+          'prop': 'switch_value',
+          'style': '--el-switch-on-color: #13ce66; --el-switch-off-color: #ff4949',
+          'key': 'switch_value',
+          'active-text': 'Pay by month',
+          'inactive-text': 'Pay by year',
+          'active-value': 100,
+          'inactive-value': 0
         },
         order: 4
       })
