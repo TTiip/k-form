@@ -14,6 +14,7 @@ export default defineComponent({
       <ElCheckboxGroup
         model-value = { form?.[options?.compSetting?.key] ?? [] }
         onChange = { fn?.onChange }
+        {...options.compSetting}
       >
         {
           options?.compSetting?.options.map((item: any) =>
