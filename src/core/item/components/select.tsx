@@ -13,7 +13,7 @@ export default defineComponent({
 
     return () => (
       <ElSelect
-        model-value={form?.[options?.compSetting?.key] ?? ''}
+        modelValue={form?.[options?.compSetting?.key] ?? ''}
         onChange={fn.onChange}
         {...options.compSetting}>
         {options?.compSetting?.options?.map((option: any, index: number) => (

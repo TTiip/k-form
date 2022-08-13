@@ -9,7 +9,8 @@ export default defineComponent({
       newName: 1,
       oldName: '',
       gender: '男',
-      checkbox_group: []
+      checkbox_group: [],
+      radio_group: ''
     })
     const CheckItems = [
       createItem('checkbox-button', {
@@ -80,12 +81,24 @@ export default defineComponent({
       }),
       createItem('checkbox-group', {
         compSetting: {
-          label: '选择框呀~',
+          label: '多选择框~',
           prop: 'checkbox_group',
           key: 'checkbox_group',
           options: [
-            { label: '男 - label', value: '男 - value', disabled: false },
-            { label: '女 - label', value: '女 - value', disabled: true }
+            { label: 'Option A - label', value: 'Option A - value' },
+            { border: true, label: 'Option B - label', value: 'Option B - value', disabled: true }
+          ]
+        },
+        order: 4
+      }),
+      createItem('radio-group', {
+        compSetting: {
+          label: '单选择框~',
+          prop: 'radio_group',
+          key: 'radio_group',
+          options: [
+            { label: 'Option A - label', value: 'Option A - value' },
+            { border: true, label: 'Option B - label', value: 'Option B - value', disabled: true }
           ]
         },
         order: 4
@@ -143,6 +156,12 @@ export default defineComponent({
             ],
             gender: [
               { required: true, message: '请选择性别~', trigger: ['blur', 'change'] }
+            ],
+            checkbox_group: [
+              { required: true, message: '请选择多选', trigger: ['blur', 'change'] }
+            ],
+            radio_group: [
+              { required: true, message: '请选择单选', trigger: ['blur', 'change'] }
             ]
           }
         },

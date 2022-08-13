@@ -17,7 +17,10 @@ export default defineComponent({
           return () => options.hook.onClick(itemInstance)
         }
       },
-      onChange: (val: any) => itemInstance.setForm({ [props.options.compSetting.key]: val }),
+      onChange: (val: any) => {
+        console.log('onChange', val)
+        return itemInstance.setForm({ [props.options.compSetting.key]: val })
+      },
       onInput: (val: any) => itemInstance.setForm({ [props.options.compSetting.key]: val })
     }
     return () => slots?.default?.(fn, options)

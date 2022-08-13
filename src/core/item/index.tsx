@@ -6,13 +6,15 @@ import KInput from './components/input'
 import Kselect from './components/select'
 import Kcheckbox from './components/checkbox-button'
 import KCheckBoxGroup from './components/checkbox-group'
+import KRadioGroup from './components/radio-group'
 
 const typeArray = [
   'button',
   'input',
   'select',
   'checkbox-button',
-  'checkbox-group'
+  'checkbox-group',
+  'radio-group'
 ] as const
 
 type ComponentKeys = typeof typeArray[number]
@@ -25,7 +27,8 @@ const COMP_COLLECTION: ComCollecTionType = {
   'input': KInput,
   'select': Kselect,
   'checkbox-button': Kcheckbox,
-  'checkbox-group': KCheckBoxGroup
+  'checkbox-group': KCheckBoxGroup,
+  'radio-group': KRadioGroup
 }
 
 export function createItem (name: ComponentKeys, options: any) {

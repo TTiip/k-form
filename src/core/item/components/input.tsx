@@ -13,7 +13,7 @@ export default defineComponent({
     return () => (
       <ElInput
         {...options.compSetting}
-        model-value = { form?.[options?.compSetting?.key] ?? '' }
+        modelValue = { form?.[options?.compSetting?.key] ?? '' }
         onInput = { fn?.onInput }
       />
     )

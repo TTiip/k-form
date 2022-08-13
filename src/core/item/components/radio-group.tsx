@@ -1,8 +1,8 @@
 import { defineComponent } from 'vue'
-import { ElCheckbox, ElCheckboxGroup } from 'element-plus'
+import { ElRadio, ElRadioGroup } from 'element-plus'
 
 export default defineComponent({
-  name: 'KCheckBoxWithGroup',
+  name: 'KButton',
   props: {
     options: { type: Object, default: () => {} },
     fn: { type: Object, default: () => {} }
@@ -10,22 +10,21 @@ export default defineComponent({
   setup (props) {
     const form: any = inject('form')
     const { fn, options } = props
-    // 此处使用 value 当作checkbox 的value值
-    // 使用 slot 设置显示的 label
     return () => (
-      <ElCheckboxGroup
-        modelValue = { form?.[options?.compSetting?.key] ?? [] }
-        onChange = { fn?.onChange }
+      <ElRadioGroup
+        modelValue={form?.[options?.compSetting?.key] ?? ''}
+        onChange={ fn?.onChange }
         {...options.compSetting}
         v-slots={{
           default: () => options?.compSetting?.options.map((item: any) =>
-            <ElCheckbox
+            <ElRadio
               key={item.value ?? item.label}
               {...item}
-              label={item.value}
+              label={item?.value}
               v-slots={{
                 default: () => item.label
-              }}/>)
+              }}
+            />)
         }}
       />
     )

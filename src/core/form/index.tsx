@@ -41,7 +41,7 @@ const KForm = defineComponent({
 
     return () => (
       <div>
-        <ElConfigProvider {...options?.providerConfig || {}}>
+        <ElConfigProvider {...options?.providerConfig ?? {}}>
           <ElForm ref={ formRef } { ...options?.compSetting }>
             {collections?.map((collection: any) => collection?.render())}
           </ElForm>
