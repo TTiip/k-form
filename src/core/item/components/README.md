@@ -74,7 +74,7 @@ createItem 接收两个参数，第一个参数为 创建的组件类型，第�
 ## createCollection 参数说明:
 
 ```ts
-createCollection(collectionType: string, componentOptions: object)
+createCollection(collectionType: string, items: object, options: object)
 
 example
 createCollection('default', SubmitBtns, {
@@ -103,7 +103,7 @@ createCollection 接收三个参数，第一个参数为 集合层组成的数�
 
 第一个参数 直接过。
 
-第二个参数 提一嘴，需要和 element-plus form 表单绑定的 model 一样设置每个 form-item 对应key的值，使用 reactive 或者 ref 进行包裹，因为校验的时候只能根据收集好依赖的数据尽心处理，否则改了数据校验也会有问题。
+第二个参数 提一嘴，需要和 element-plus form 表单绑定的 model 一样设置每个 form-item 对应key的值，使用 reactive 或者 ref 进行包裹，因为校验的时候只能根据收集好依赖的数据进行处理，否则改了数据校验也会有问题。
 
 第三个参数: 类型为一个对象。
 
