@@ -142,7 +142,10 @@ export default defineComponent({
           'text': false,
           'text-label': '提交',
           'type': 'primary',
-          'class': 'mr-[8px]'
+          'class': 'mr-[8px]',
+          'style': {
+            'background-color': 'auto'
+          }
         },
         order: 2,
         hook: {
