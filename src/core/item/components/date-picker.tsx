@@ -14,7 +14,7 @@ export default defineComponent({
     const { fn, options } = props
 
     const isHoliday = (cell: any) => {
-      return options?.holidays.includes(cell.dayjs.format('YYYY-MM-DD'))
+      return options?.holidays?.includes(cell.dayjs.format('YYYY-MM-DD'))
     }
 
     return () => (
