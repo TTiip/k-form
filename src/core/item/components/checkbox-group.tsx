@@ -1,4 +1,3 @@
-import { defineComponent } from 'vue'
 import { ElCheckbox, ElCheckboxGroup } from 'element-plus'
 
 export default defineComponent({

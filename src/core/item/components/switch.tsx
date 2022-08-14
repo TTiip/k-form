@@ -1,4 +1,3 @@
-import { defineComponent, inject } from 'vue'
 import { ElSwitch } from 'element-plus'
 
 export default defineComponent({

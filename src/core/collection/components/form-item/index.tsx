@@ -1,5 +1,5 @@
 import './index.css'
-import { Transition, computed, defineComponent, inject } from 'vue'
+import { Transition } from 'vue'
 import { ElFormItem } from 'element-plus'
 
 export default defineComponent({

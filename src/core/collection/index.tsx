@@ -1,5 +1,4 @@
 import type { Component } from 'vue'
-import { h } from 'vue'
 import KBaseCollection from './shared/base'
 import KFormItemCollection from './components/form-item'
 import KDefaultCollection from './components/default'

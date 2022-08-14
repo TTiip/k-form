@@ -1,4 +1,3 @@
-import { defineComponent } from 'vue'
 // import FormByTsx from './case/form-by-tsx'
 import FormByVue from './case/form-by-vue/index.vue'
 

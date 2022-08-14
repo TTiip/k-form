@@ -1,4 +1,3 @@
-import { defineComponent, inject } from 'vue'
 import { ElDatePicker } from 'element-plus'
 // 引入模块css 在 tsx 中避免 class 类名污染
 import classModule from './date-picker.module.css'

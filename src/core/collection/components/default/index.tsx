@@ -1,4 +1,4 @@
-import { Transition, computed, defineComponent, inject } from 'vue'
+import { Transition } from 'vue'
 
 export default defineComponent({
   name: 'KDefaultCollection',

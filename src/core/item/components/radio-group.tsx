@@ -1,4 +1,3 @@
-import { defineComponent } from 'vue'
 import { ElRadio, ElRadioGroup } from 'element-plus'
 
 export default defineComponent({

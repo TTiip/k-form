@@ -1,5 +1,3 @@
-import { defineComponent, inject, provide, ref } from 'vue'
-
 export default defineComponent({
   name: 'KBaseCollection',
   props: {

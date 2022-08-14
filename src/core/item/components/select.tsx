@@ -1,4 +1,3 @@
-import { defineComponent, inject } from 'vue'
 import { ElOption, ElSelect } from 'element-plus'
 
 export default defineComponent({

@@ -4,7 +4,7 @@ import { createCollection, createForm, createItem } from '~/core'
 
 export default defineComponent({
   name: 'CaseForm1',
-  setup (props, { emit }) {
+  setup (props, { emit, expose }) {
     // 这里定义的对象一定要是一个 reactive 包裹的对象，建立响应式依赖，可以传递一个空对象。
     const modelData = reactive({
       newName: 1,
@@ -70,8 +70,8 @@ export default defineComponent({
             width: '100%'
           },
           options: [
-            { label: '男', value: '男', disabled: false },
-            { label: '女', value: '女', disabled: true }
+            { label: '男', value: '男' },
+            { label: '女', value: '女' }
           ]
         },
         customLabel: () => '',
@@ -84,7 +84,7 @@ export default defineComponent({
           key: 'checkbox_group',
           options: [
             { label: 'Option A - label', value: 'Option A - value' },
-            { border: true, label: 'Option B - label', value: 'Option B - value', disabled: true }
+            { border: true, label: 'Option B - label', value: 'Option B - value' }
           ]
         },
         order: 4
@@ -96,7 +96,7 @@ export default defineComponent({
           prop: 'radio_group',
           options: [
             { label: 'Option A - label', value: 'Option A - value' },
-            { border: true, label: 'Option B - label', value: 'Option B - value', disabled: true }
+            { border: true, label: 'Option B - label', value: 'Option B - value' }
           ]
         },
         order: 4
@@ -207,10 +207,11 @@ export default defineComponent({
           },
           onSubmit: (val: any) => {
             emit('submit', val)
-            console.log('Form中的 submit 方法~', val)
           }
         }
       })
+
+    expose({ modelData })
     // 1.直接在setup中导出一个渲染函数
     return () => Form.render()
 

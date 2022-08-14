@@ -1,5 +1,4 @@
 import type { Component } from 'vue'
-import { h } from 'vue'
 import KBase from './shared/base'
 import KButton from './components/button'
 import KInput from './components/input'
