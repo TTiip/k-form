@@ -19,8 +19,7 @@ export default defineComponent({
       checkbox_group: [],
       radio_group: '',
       switch_value: false,
-      data_picker: '2022-08-11',
-      aa: true
+      data_picker: '2022-08-11'
     })
     type ModelData = typeof modelData
 
