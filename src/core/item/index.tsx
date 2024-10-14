@@ -1,5 +1,6 @@
 import { type Component, h } from 'vue'
 import KButton from './components/button'
+import KCascader from './components/cascader'
 import Kcheckbox from './components/checkbox-button'
 import KCheckBoxGroup from './components/checkbox-group'
 import kDatePicker from './components/date-picker'
@@ -18,6 +19,7 @@ const typeArray = [
   'radio-group',
   'switch',
   'date-picker',
+  'cascader',
 ] as const
 
 type ComponentKeys = typeof typeArray[number]
@@ -34,6 +36,7 @@ const COMP_COLLECTION: ComCollecTionType = {
   'radio-group': KRadioGroup,
   'switch': KSwitch,
   'date-picker': kDatePicker,
+  'cascader': KCascader,
 }
 
 export function createItem (name: ComponentKeys, options: any) {

@@ -1,3 +1,4 @@
+import { createPinia } from 'pinia'
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import routes from '~/router'
@@ -34,7 +35,7 @@ const router = createRouter({
 //   }
 // })
 
-app.use(router)
+app.use(router).use(createPinia())
 
 // 可加上 options { eager: true } 直接引入所有的模块
 Object.values(import.meta.glob('./modules/*.ts', { eager: true }))

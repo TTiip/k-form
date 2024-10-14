@@ -1,6 +1,6 @@
 # 组件参数说明
 
-> 详细使用可以查看 [form-by-vue](../../../../src/pages/case/form-by-vue/) 的在 vue 中使用 tsx 的示例。
+> 详细使用可以查看 [/src/page/index](../../../pages/index.tsx) 的 tsx 的示例。
 ## 部分参数说明
 ```javascript
 设计模式思想为，将最小的原子化的东西指定为每一个 form 表单的 item 中的组件（input、select等）
