@@ -1,10 +1,11 @@
 import { ElCheckbox, ElCheckboxGroup } from 'element-plus'
+import { defineComponent, inject } from 'vue'
 
 export default defineComponent({
   name: 'KCheckBoxGroup',
   props: {
     options: { type: Object, default: () => {} },
-    fn: { type: Object, default: () => {} }
+    fn: { type: Object, default: () => {} },
   },
   setup (props) {
     const form: any = inject('form')
@@ -13,20 +14,22 @@ export default defineComponent({
     // 使用 slot 设置显示的 label
     return () => (
       <ElCheckboxGroup
-        modelValue = { form?.[options?.compSetting?.key] ?? [] }
-        onChange = { fn?.onChange }
+        modelValue={form?.[options?.compSetting?.key] ?? []}
+        onChange={fn?.onChange}
         {...options.compSetting}
         v-slots={{
-          default: () => options?.compSetting?.options.map((item: any) =>
+          default: () => options?.compSetting?.options.map((item: any) => (
             <ElCheckbox
               key={item.value ?? item.label}
               {...item}
               label={item.value}
               v-slots={{
-                default: () => item.label
-              }}/>)
+                default: () => item.label,
+              }}
+            />
+          )),
         }}
       />
     )
-  }
+  },
 })

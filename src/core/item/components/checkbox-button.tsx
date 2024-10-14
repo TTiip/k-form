@@ -1,10 +1,11 @@
 import { ElCheckboxButton } from 'element-plus'
+import { defineComponent, inject } from 'vue'
 
 export default defineComponent({
   name: 'KCheckboxButton',
   props: {
     options: { type: Object, default: () => {} },
-    fn: { type: Object, default: () => {} }
+    fn: { type: Object, default: () => {} },
   },
   setup (props) {
     const { fn, options } = props
@@ -14,9 +15,10 @@ export default defineComponent({
       <ElCheckboxButton
         {...options.compSetting}
         modelValue={form?.[options.compSetting.key] ?? false}
-        onUpdate:modelValue={fn?.onChange}>
+        onUpdate:modelValue={fn?.onChange}
+      >
         {options.compSetting.text}
       </ElCheckboxButton>
     )
-  }
+  },
 })

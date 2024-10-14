@@ -7,15 +7,20 @@
   <title>Vitesse Lite</title>
   <meta name="description" content="Opinionated Vite Starter Template">
 </head>
-<body class="font-sans dark:text-white dark:bg-hex-121212">
+<body class="font-sans">
   <div id="app"></div>
   <script>
     (function () {
-      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-      const setting = localStorage.getItem('color-schema') || 'auto'
-      if (setting === 'dark' || (prefersDark && setting !== 'light')) { document.documentElement.classList.toggle('dark', true) }
+      const setting = localStorage.getItem('vueuse-color-scheme') || 'auto'
+      if (setting !== 'light') { document.documentElement.classList.toggle('dark', true) }
+
+      // 设置系统默认颜色
+      const defaultColor = localStorage.getItem('--el-color-primary') || '#E6A23C'
+      document.documentElement.style.setProperty('--el-color-primary', defaultColor)
+      document.documentElement.style.setProperty('--el-color-primary-rgb',
+        [[1, 3], [3, 5], [5, 7]].map(i => parseInt(defaultColor.slice(...i), 16)).join(', '))
     })()
   </script>
-  <script type="module" src="/src/main.tsx"></script>
+  <script type="module" src="/src/main.ts"></script>
 </body>
 </html>

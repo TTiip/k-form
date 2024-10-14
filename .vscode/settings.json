@@ -1,17 +1,49 @@
 {
-  "cSpell.words": ["Vitesse"],
+  // 禁用默认格式化程序，改用 eslint
   "prettier.enable": false,
+  "editor.formatOnSave": false,
+
+  // 自动修复
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "never"
   },
+
+  /* 路径别名插件 开始 */
+  "alias-skip.mappings": {
+    "@": "/src", // 默认只有`@`映射，映射到`/src`，你可以添加更多映射，映射路径必须以`/`开头
+    "~": "/src"
+  },
+  // 可缺省后缀名的文件列表，以下文件不需要写后缀名
+  "alias-skip.allowedsuffix": ["js", "vue", "jsx", "ts", "tsx"],
+  // 判断项目根目录的依据，默认为package.json，即存在该文件的目录为项目根目录，例如小程序项目可以改成app.json
+  "alias-skip.rootpath": "package.json",
+  /* 路径别名插件 结束 === */
+
+  // 在 IDE 中将样式规则静音，但仍自动修复它们
+  "eslint.rules.customizations": [
+    { "rule": "style/*", "severity": "off", "fixable": false },
+    { "rule": "format/*", "severity": "off", "fixable": false },
+    { "rule": "*-indent", "severity": "off", "fixable": false },
+    { "rule": "*-spacing", "severity": "off", "fixable": false },
+    { "rule": "*-spaces", "severity": "off", "fixable": false },
+    { "rule": "*-order", "severity": "off", "fixable": false },
+    { "rule": "*-dangle", "severity": "off", "fixable": false },
+    { "rule": "*-newline", "severity": "off", "fixable": false },
+    { "rule": "*quotes", "severity": "off", "fixable": false },
+    { "rule": "*semi", "severity": "off", "fixable": false }
+  ],
+  // 为所有支持的语言启用 eslint
   "eslint.validate": [
     "javascript",
+    "javascriptreact",
     "typescript",
+    "typescriptreact",
     "vue",
-    "html"
-  ],
-  "files.associations": {
-    "*.css": "postcss"
-  },
-  "editor.formatOnSave": false
+    "html",
+    "markdown",
+    "json",
+    "jsonc",
+    "yaml",
+  ]
 }

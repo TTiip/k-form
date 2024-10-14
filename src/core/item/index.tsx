@@ -1,13 +1,13 @@
-import type { Component } from 'vue'
-import KBase from './shared/base'
+import { type Component, h } from 'vue'
 import KButton from './components/button'
-import KInput from './components/input'
-import Kselect from './components/select'
 import Kcheckbox from './components/checkbox-button'
 import KCheckBoxGroup from './components/checkbox-group'
-import KRadioGroup from './components/radio-group'
-import KSwitch from './components/switch'
 import kDatePicker from './components/date-picker'
+import KInput from './components/input'
+import KRadioGroup from './components/radio-group'
+import Kselect from './components/select'
+import KSwitch from './components/switch'
+import KBase from './shared/base'
 
 const typeArray = [
   'button',
@@ -17,7 +17,7 @@ const typeArray = [
   'checkbox-group',
   'radio-group',
   'switch',
-  'date-picker'
+  'date-picker',
 ] as const
 
 type ComponentKeys = typeof typeArray[number]
@@ -33,7 +33,7 @@ const COMP_COLLECTION: ComCollecTionType = {
   'checkbox-group': KCheckBoxGroup,
   'radio-group': KRadioGroup,
   'switch': KSwitch,
-  'date-picker': kDatePicker
+  'date-picker': kDatePicker,
 }
 
 export function createItem (name: ComponentKeys, options: any) {
@@ -41,11 +41,9 @@ export function createItem (name: ComponentKeys, options: any) {
   const comp: any = COMP_COLLECTION[name] ? COMP_COLLECTION[name] : name
   return {
     render: () =>
-      h(KBase,
-        { options },
-        {
-          default: (fn: (...args: any) => void) => h(comp, { options, fn })
-        }),
-    options
+      h(KBase, { options }, {
+        default: (fn: (...args: any) => void) => h(comp, { options, fn }),
+      }),
+    options,
   }
 }

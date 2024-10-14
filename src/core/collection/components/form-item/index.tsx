@@ -1,12 +1,12 @@
-import './index.css'
-import { Transition } from 'vue'
 import { ElFormItem } from 'element-plus'
+import { computed, defineComponent, inject, Transition } from 'vue'
+import './index.css'
 
 export default defineComponent({
   name: 'KFormItemCollection',
   props: {
     items: { type: Array, default: () => [] },
-    options: { type: Object, default: () => ({}) }
+    options: { type: Object, default: () => ({}) },
   },
   setup (props) {
     const { options } = props
@@ -27,20 +27,21 @@ export default defineComponent({
       return (
         <ElFormItem
           class="fade"
-          { ...options.compSetting }
-          { ...item?.options?.compSetting }
+          {...options.compSetting}
+          {...item?.options?.compSetting}
           v-slots={{
             default: item.render,
             label: item.options?.customLabel
               ? () => {
                 return (
                   item.options?.customLabel({
-                    ...Object.assign({}, collectionInstance)
+                    ...Object.assign({}, collectionInstance),
                   }) || item.options?.compSetting?.label
                 )
               }
-              : () => null
-          }}/>
+              : () => null,
+          }}
+        />
       )
     }
 
@@ -60,5 +61,5 @@ export default defineComponent({
           </Transition>
         )
       })
-  }
+  },
 })

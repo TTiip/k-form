@@ -42,16 +42,16 @@ function isTargetType (value: unknown, target: string) {
   return valueType === targetType
 }
 
-const validatePass = ({
+function validatePass ({
   value,
   callback,
-  message
+  message,
 }: {
-	rule: any
-	value: any
-	callback: (...arg: any) => void
-	message: string
-}) => {
+  rule: any
+  value: any
+  callback: (...arg: any) => void
+  message: string
+}) {
   if (isTargetType(value, 'boolean')) {
     callback()
   } else if (isTargetType(value, 'number') && (value || value === 0)) {
@@ -69,41 +69,41 @@ export const rules: RuleItemType = {
   newName: {
     required: true,
     validator: (rule: any, value: any, callback: (...arg: any) => void) => validatePass({ rule, value, callback, message: '请填写姓名' }),
-    trigger: ['blur', 'change']
+    trigger: ['blur', 'change'],
   },
   oldName: {
     required: true,
     validator: (rule: any, value: any, callback: (...arg: any) => void) => validatePass({ rule, value, callback, message: '请填写曾用名' }),
-    trigger: ['blur', 'change']
+    trigger: ['blur', 'change'],
   },
   gender: {
     required: true,
     validator: (rule: any, value: any, callback: (...arg: any) => void) => validatePass({ rule, value, callback, message: '请选择性别' }),
-    trigger: ['blur', 'change']
+    trigger: ['blur', 'change'],
   },
   address: {
     required: true,
     validator: (rule: any, value: any, callback: (...arg: any) => void) => validatePass({ rule, value, callback, message: '请填写地址' }),
-    trigger: ['blur', 'change']
+    trigger: ['blur', 'change'],
   },
   checkbox_group: {
     required: true,
     validator: (rule: any, value: any, callback: (...arg: any) => void) => validatePass({ rule, value, callback, message: '请选择多选' }),
-    trigger: ['blur', 'change']
+    trigger: ['blur', 'change'],
   },
   radio_group: {
     required: true,
     validator: (rule: any, value: any, callback: (...arg: any) => void) => validatePass({ rule, value, callback, message: '请选择单选' }),
-    trigger: ['blur', 'change']
+    trigger: ['blur', 'change'],
   },
   switch_value: {
     required: true,
     validator: (rule: any, value: any, callback: (...arg: any) => void) => validatePass({ rule, value, callback, message: '请选择switch单选' }),
-    trigger: ['blur', 'change']
+    trigger: ['blur', 'change'],
   },
   data_picker: {
     required: true,
     validator: (rule: any, value: any, callback: (...arg: any) => void) => validatePass({ rule, value, callback, message: '请选择时间' }),
-    trigger: ['blur', 'change']
-  }
+    trigger: ['blur', 'change'],
+  },
 }

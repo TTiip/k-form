@@ -1,7 +1,7 @@
-import type { Component } from 'vue'
-import KBaseCollection from './shared/base'
-import KFormItemCollection from './components/form-item'
+import { type Component, h } from 'vue'
 import KDefaultCollection from './components/default'
+import KFormItemCollection from './components/form-item'
+import KBaseCollection from './shared/base'
 
 const typeArray = ['form-item', 'default'] as const
 
@@ -13,26 +13,24 @@ type ComCollecTionType = {
 
 const COMP_COLLECTION: ComCollecTionType = {
   'form-item': KFormItemCollection,
-  'default': KDefaultCollection
+  'default': KDefaultCollection,
 }
 
 export function createCollection (name: ComponentKeys, items: object, options: object) {
   const comp: any = COMP_COLLECTION[name] ? COMP_COLLECTION[name] : name
   return {
     render: () =>
-      h(KBaseCollection as any,
-        {
-          items,
-          options
-        },
-        {
-          default: (items: object, options: object) =>
-            h(comp, {
-              items,
-              options
-            })
-        }),
+      h(KBaseCollection as any, {
+        items,
+        options,
+      }, {
+        default: (items: object, options: object) =>
+          h(comp, {
+            items,
+            options,
+          }),
+      }),
     items,
-    options
+    options,
   }
 }

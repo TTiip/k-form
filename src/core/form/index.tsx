@@ -1,17 +1,18 @@
 import { ElConfigProvider, ElForm } from 'element-plus'
+import { defineComponent, h, provide, reactive, useTemplateRef } from 'vue'
 
 const KForm = defineComponent({
   name: 'KForm',
   props: {
     initForm: { type: Object, default: () => ({}) },
     collections: { type: Array, default: () => [] },
-    options: { type: Object, default: () => ({}) }
+    options: { type: Object, default: () => ({}) },
   },
   setup (props) {
     const { options, collections, initForm } = props
     // 切记这里不能使用 结构赋值 form= {...initForm} 这样会失去对原来的数据引用，校验数据时会出现输入框修改了，原值不修改，从而校验失效。
     const form = reactive(initForm)
-    const formRef: any = ref(null)
+    const formRef: any = useTemplateRef('formRefStr')
 
     const defaultFn = (val: any) => val
 
@@ -32,7 +33,7 @@ const KForm = defineComponent({
             console.error('表单中存在未填写的必填项~')
           }
         })
-      }
+      },
     }
 
     provide('form', form)
@@ -41,18 +42,18 @@ const KForm = defineComponent({
     return () => (
       <div>
         <ElConfigProvider {...options?.providerConfig ?? {}}>
-          <ElForm ref={ formRef } { ...options?.compSetting }>
+          <ElForm ref="formRefStr" {...options?.compSetting}>
             {collections?.map((collection: any) => collection?.render())}
           </ElForm>
         </ElConfigProvider>
       </div>
     )
-  }
+  },
 })
 
-export const createForm = (collections: any, initForm?: object, options?: object) => {
+export function createForm (collections: any, initForm?: object, options?: object) {
   return {
     render: () => h(KForm as any, { collections, initForm, options }),
-    options
+    options,
   }
 }

@@ -1,10 +1,10 @@
-import { Transition } from 'vue'
+import { computed, defineComponent, inject, Transition } from 'vue'
 
 export default defineComponent({
   name: 'KDefaultCollection',
   props: {
     items: { type: Array, default: () => [] },
-    options: { type: Object, default: () => ({}) }
+    options: { type: Object, default: () => ({}) },
   },
   setup (props) {
     const form = inject('form')
@@ -41,5 +41,5 @@ export default defineComponent({
           </Transition>
         )
       })
-  }
+  },
 })

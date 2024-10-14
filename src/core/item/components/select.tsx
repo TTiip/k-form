@@ -1,10 +1,11 @@
 import { ElOption, ElSelect } from 'element-plus'
+import { defineComponent, inject } from 'vue'
 
 export default defineComponent({
   name: 'KSelect',
   props: {
     options: { type: Object, default: () => {} },
-    fn: { type: Object, default: () => {} }
+    fn: { type: Object, default: () => {} },
   },
   setup (props) {
     const { options, fn } = props
@@ -20,9 +21,10 @@ export default defineComponent({
           <ElOption
             {...option}
             key={index}
-          ></ElOption>
+          >
+          </ElOption>
         ))}
       </ElSelect>
     )
-  }
+  },
 })

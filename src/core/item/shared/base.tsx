@@ -1,12 +1,14 @@
+import { defineComponent, inject } from 'vue'
+
 export default defineComponent({
   name: 'KBaseItem',
   props: {
-    options: { type: Object, default: () => {} }
+    options: { type: Object, default: () => {} },
   },
   setup (props, { slots }) {
     const { options } = props
     const itemInstance: any = {
-      ...Object.assign({}, inject('collectionInstance'))
+      ...Object.assign({}, inject('collectionInstance')),
     }
     const fn = {
       onClick: () => {
@@ -16,8 +18,8 @@ export default defineComponent({
         }
       },
       onChange: (val: any) => itemInstance.setForm({ [props.options.compSetting.key]: val }),
-      onInput: (val: any) => itemInstance.setForm({ [props.options.compSetting.key]: val })
+      onInput: (val: any) => itemInstance.setForm({ [props.options.compSetting.key]: val }),
     }
     return () => slots?.default?.(fn, options)
-  }
+  },
 })

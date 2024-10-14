@@ -6,6 +6,33 @@ body,
   padding: 0;
 }
 
-html.dark {
-  background: #121212;
+/* element-plus reset */
+.el-aside, .el-main {
+  padding: 0!important;
 }
+
+.el-form-item {
+  min-width: 300px;
+}
+
+.el-input,
+.el-select {
+  width: 100%!important;
+}
+
+/* .el-scrollbar__view {
+  display: flex;
+}
+
+.el-scrollbar__wrap {
+  flex: 1;
+  height: auto;
+}
+
+.el-scrollbar__bar {
+  bottom: -6px;
+}
+
+.el-scrollbar__view {
+  padding-top: 6px;
+} */

@@ -1,10 +1,11 @@
 import { ElInput } from 'element-plus'
+import { defineComponent, inject } from 'vue'
 
 export default defineComponent({
   name: 'KInput',
   props: {
     options: { type: Object, default: () => {} },
-    fn: { type: Object, default: () => {} }
+    fn: { type: Object, default: () => {} },
   },
   setup (props) {
     const form: any = inject('form')
@@ -12,9 +13,9 @@ export default defineComponent({
     return () => (
       <ElInput
         {...options.compSetting}
-        modelValue = { form?.[options?.compSetting?.key] ?? '' }
-        onInput = { fn?.onInput }
+        modelValue={form?.[options?.compSetting?.key] ?? ''}
+        onInput={fn?.onInput}
       />
     )
-  }
+  },
 })
