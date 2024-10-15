@@ -11,8 +11,6 @@ export default defineComponent({
     const { fn, options } = props
     const form: any = inject('form')
 
-    console.log(options.compSetting, 'options.compSetting')
-
     return () => (
       <ElCascader
         {...options.compSetting}
