@@ -16,8 +16,7 @@ export default defineComponent({
         {...options.compSetting}
         modelValue={form?.[options?.compSetting?.key] ?? ''}
         onChange={fn?.onChange}
-      >
-      </ElCascader>
+      />
     )
   },
 })
